@@ -77,6 +77,15 @@
     </main>
   </div>
 
+  <!-- Monaco config (MUST be before loader.min.js) -->
+  <script>
+    window.require = {
+      paths: {
+        vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs"
+      }
+    };
+  </script>
+
   <!-- Monaco loader -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
 
