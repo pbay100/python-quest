@@ -1,20 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Python Quest</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Quest</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <div class="app">
+    <header class="header">
+      <div class="titleBlock">
+        <h1>Python Quest</h1>
+        <p class="subtitle">Learn Python by writing code. Earn XP. Level up.</p>
+      </div>
 
-<h1>Welcome to Python Quest</h1>
+      <div class="stats">
+        <div class="stat">
+          <div class="statLabel">Level</div>
+          <div class="statValue" id="levelValue">1</div>
+        </div>
 
-<p>Your journey to becoming a Python developer begins here.</p>
+        <div class="stat">
+          <div class="statLabel">XP</div>
+          <div class="statValue" id="xpValue">0</div>
+        </div>
 
-<button id="startBtn">Start Lesson</button>
+        <div class="stat wide">
+          <div class="statLabel">Progress</div>
+          <div class="xpBar">
+            <div class="xpFill" id="xpFill"></div>
+          </div>
+          <div class="xpText" id="xpText">0 / 100</div>
+        </div>
+      </div>
+    </header>
 
-<script src="script.js"></script>
+    <main class="main">
+      <aside class="sidebar">
+        <div class="sidebarHeader">
+          <h2>Lessons</h2>
+          <button id="resetBtn" class="btn secondary" type="button">Reset Progress</button>
+        </div>
+        <div id="lessonList" class="lessonList"></div>
+      </aside>
 
+      <section class="workspace">
+        <div class="lessonHeader">
+          <div>
+            <h2 id="lessonTitle">Loading…</h2>
+            <p id="lessonDesc" class="lessonDesc"></p>
+          </div>
+
+          <div class="lessonActions">
+            <div id="pyStatus" class="pyStatus loading">Python loading…</div>
+            <button id="nextBtn" class="btn secondary" type="button">Next Lesson</button>
+          </div>
+        </div>
+
+        <div class="editorWrap">
+          <div id="editor" class="editor"></div>
+        </div>
+
+        <div class="runRow">
+          <button id="runBtn" class="btn primary" type="button">Run Code</button>
+        </div>
+
+        <div class="outputWrap">
+          <div class="outputHeader">
+            <h3>Output</h3>
+            <div id="evalBadge" class="badge neutral">Not run</div>
+          </div>
+          <pre id="output" class="output">Press “Run Code”.</pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Monaco loader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+
+  <!-- Pyodide -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+
+  <!-- App -->
+  <script src="script.js"></script>
 </body>
 </html>
