@@ -12,7 +12,7 @@
     <header class="header">
       <div class="titleBlock">
         <h1>Python Quest</h1>
-        <p class="subtitle">Learn Python by writing code. Earn XP. Level up.</p>
+        <p class="subtitle">Learn Python by writing code. Practice with unlimited tests.</p>
       </div>
 
       <div class="stats">
@@ -47,37 +47,89 @@
 
       <section class="workspace">
         <div class="lessonHeader">
-          <div>
+          <div class="lessonHeaderLeft">
             <h2 id="lessonTitle">Loading…</h2>
             <p id="lessonDesc" class="lessonDesc"></p>
+
+            <div class="tabs">
+              <button id="tabLearn" class="tab active" type="button">Learn</button>
+              <button id="tabTest" class="tab" type="button">Test</button>
+            </div>
           </div>
 
-          <div class="lessonActions">
+          <div class="lessonHeaderRight">
             <div id="pyStatus" class="pyStatus loading">Python loading…</div>
             <button id="nextBtn" class="btn secondary" type="button">Next Lesson</button>
           </div>
         </div>
 
-        <div class="editorWrap">
-          <div id="editor" class="editor"></div>
-        </div>
+        <!-- MAIN 2-COLUMN AREA: Editor (left) + Runner/Output (right) -->
+        <div class="workGrid">
 
-        <div class="runRow">
-          <button id="runBtn" class="btn primary" type="button">Run Code</button>
-        </div>
+          <!-- LEFT: Editor -->
+          <div class="editorCol">
+            <div class="panelHeader">
+              <div class="panelTitle">Editor</div>
+              <div class="panelMeta">
+                <span class="smallBadge" id="modeBadge">Learn</span>
+              </div>
+            </div>
 
-        <div class="outputWrap">
-          <div class="outputHeader">
-            <h3>Output</h3>
-            <div id="evalBadge" class="badge neutral">Not run</div>
+            <div class="editorWrap">
+              <div id="editor" class="editor"></div>
+            </div>
           </div>
-          <pre id="output" class="output">Press “Run Code”.</pre>
+
+          <!-- RIGHT: Run + Output (always visible) -->
+          <div class="runnerCol">
+            <div class="panelHeader">
+              <div class="panelTitle">Run & Output</div>
+              <div class="panelMeta">
+                <span class="smallBadge" id="difficultyBadge" style="display:none;">Easy</span>
+                <span class="smallBadge neutral" id="evalBadge">Not run</span>
+              </div>
+            </div>
+
+            <div class="testPanel" id="testPanel" style="display:none;">
+              <div class="testRow">
+                <div class="testPromptLabel">Test prompt</div>
+                <div class="testDifficulty" id="testDifficultyText">Easy</div>
+              </div>
+              <div class="testPrompt" id="testPrompt">Loading…</div>
+
+              <div class="testActions">
+                <button id="newTestBtn" class="btn secondary" type="button">New Test</button>
+                <button id="revealBtn" class="btn danger" type="button">Reveal Answer</button>
+              </div>
+
+              <div class="hintWrap" id="hintWrap" style="display:none;">
+                <div class="hintTitle">Hint</div>
+                <div class="hintText" id="hintText"></div>
+              </div>
+
+              <div class="revealWrap" id="revealWrap" style="display:none;">
+                <div class="hintTitle">Answer</div>
+                <pre class="answerBox" id="answerBox"></pre>
+              </div>
+            </div>
+
+            <div class="runRow">
+              <button id="runBtn" class="btn primary" type="button">Run Code</button>
+            </div>
+
+            <div class="outputWrap">
+              <div class="outputHeader">
+                <h3>Output</h3>
+              </div>
+              <pre id="output" class="output">Press “Run Code”.</pre>
+            </div>
+          </div>
         </div>
       </section>
     </main>
   </div>
 
-  <!-- Monaco config (MUST be before loader.min.js) -->
+  <!-- IMPORTANT: Monaco needs this config BEFORE loader.min.js -->
   <script>
     window.require = {
       paths: {
